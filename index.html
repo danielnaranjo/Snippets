@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Easy way to use share button and CSS Sprites</title>
+		<style>
+			body {
+				margin: 50px auto;
+				padding: 10px;
+			}
+			h1, h3, p {
+				margin: 5px;
+				padding: 0;
+			}
+			h1 {
+				font-size: 24px;
+			}
+			h3 {
+				font-size: 16px;
+			}
+			p {
+				font-size: 14px;
+			}
+			.snippet {
+				background-color: #EFEFEF;
+				margin: 5px;
+				padding: 5px;
+			}
+
+		/* Begin CSS snippet */
+			#social {
+			  display: inline-block;
+			  height: auto;
+			  margin: 0;
+			  padding: 0;
+			  vertical-align: top;
+			  width: 100%;
+			}
+			.facebook,
+			.twitter,
+			.youtube,
+			.linkedin,
+			.gplus,
+			.youtube {
+			  background-image: url("sociales.png");
+			  background-repeat: no-repeat;
+			  height: 34px;
+			  width: 32px;
+			  margin-right: -5px;
+			  display: inline-block;
+			  vertical-align: top;
+			  cursor: pointer;
+			}
+			.facebook {
+			  background-position: 0px 0px;
+			}
+			.twitter {
+			  background-position: -32px 0px;
+			}
+			.gplus {
+			  background-position: -92px 0px;
+			}
+			.youtube {
+			  background-position: -62px 0px;
+			}
+			.linkedin {
+			  background-position: -122px 0px;
+			}
+			/* End CSS snippet */
+		</style>
+	</head>
+	<body>
+		<h1>Easy way to use share button and CSS Sprites</h1>
+		<h3>A little history..</h3>
+		<p>Once I had to place some social buttons in a horrible design provided by a customer, I wanted to do something fast, functional and future use so I wrote this simple solution:</p>
+		<p>&nbsp;</p>
+		<div id="social">
+		  <div class="facebook"			data-user="danielnaranjoserrano"></div>
+			<div class="twitter"		data-user="naranjodaniel"></div>
+			<div class="youtube"		data-user="dannars"></div>
+			<div class="gplus"			data-user="u/0/112245561130565578836"></div>
+			<div class="linkedin"		data-user="in/danielnaranjo"></div>
+		</div>
+
+		<p>&nbsp;</p>
+		<h3>HTML</h3>
+		<pre class="snippet">
+			&lt;div id=&quot;social&quot;&gt;<br>
+			&lt;div class=&quot;facebook&quot;		data-user=&quot;yourfacebook&quot;&gt;&lt;/div&gt;<br>
+			&lt;div class=&quot;twitter&quot;		data-user=&quot;yourtwitter&quot;&gt;&lt;/div&gt;<br>
+			&lt;div class=&quot;youtube&quot;		data-user=&quot;youryoutube&quot;&gt;&lt;/div&gt;<br>
+			&lt;div class=&quot;gplus&quot;		data-user=&quot;u/0/yournumber&quot;&gt;&lt;/div&gt;<br>
+			&lt;div class=&quot;linkedin&quot;		data-user=&quot;in/yourlinkedin&quot;&gt;&lt;/div&gt;<br>
+			&lt;/div&gt;
+		</pre>
+		<p>&nbsp;</p>
+		<h3>CSS</h3>
+		<pre class="snippet">#social {<br>
+			display: inline-block;<br>
+			height: auto;<br>
+			margin: 0;<br>
+			padding: 0;<br>
+			vertical-align: top;<br>
+			width: 100%;<br>
+			}<br>
+			.facebook,.twitter,.youtube,.linkedin,.gplus,.youtube {<br>
+			background-image: url(&quot;sociales.png&quot;);<br>
+			background-repeat: no-repeat;<br>
+			height: 34px;<br>
+			width: 32px;<br>
+			margin-right: -5px;<br>
+			display: inline-block;<br>
+			vertical-align: top;<br>
+			cursor: pointer;<br>
+			}<br>
+			.facebook {background-position: 0px 0px;}<br>
+			.twitter {background-position: -32px 0px;}<br>
+			.gplus {background-position: -92px 0px;}<br>
+			.youtube {background-position: -62px 0px;}<br>
+			.linkedin {background-position: -122px 0px;}
+		</pre>
+		<p>&nbsp;</p>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				// Only You have to modify the "data-user" attribute and done!
+				$("#social div").on('click', function(event){
+					var myurl = $(this).attr("class");
+					var myuser = $(this).attr("data-user");
+					gotoandplay(myurl,myuser);
+				});
+
+			});
+			// In honor to Adobe Flash/ActionScript :)
+			function gotoandplay(x,y) {
+				var url = "http://www." + x.replace(/gplus/g,"plus.google") + ".com/" + y;
+				window.open(url , '_blank');
+			}
+		</script>
+	</body>
+</html>
